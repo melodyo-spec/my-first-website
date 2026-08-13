@@ -1,102 +1,895 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="scroll-smooth">
 <head>
-    <title>My First Business Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bespoke Excellence | Business Showcase</title>
 
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cormorant Garamond & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        nude: {
+                            50: '#FAF8F5',
+                            100: '#F4EFEA',
+                            200: '#E6DCD3',
+                            300: '#D5C4B4',
+                            400: '#C0A995',
+                            500: '#A98F79',
+                            600: '#8F735D',
+                            700: '#6E5645',
+                            800: '#4E3C30',
+                            900: '#2C211A',
+                            950: '#1A1410',
+                        },
+                        earth: {
+                            light: '#E2D9D0',
+                            DEFAULT: '#8C7A6B',
+                            dark: '#3A322C',
+                        },
+                        obsidian: '#171514',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Utility CSS -->
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f5f1eb;
-        text-align: center;
-        margin: 0;
-        padding-top: 120px;
-    }
-
-    h1 {
-        font-size: 55px;
-        color: #222;
-        margin-bottom: 20px;
-    }
-
-    p {
-        font-size: 20px;
-        color: #555;
-        margin-bottom: 30px;
-    }
-
-    button {
-        padding: 15px 30px;
-        font-size: 18px;
-        background-color: #222;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #555;
-    }
-    nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 0;
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-nav h2 {
-    display: inline;
-    margin-right: 50px;
-}
-
-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: #222;
-    font-size: 16px;
-}
-
-nav a:hover {
-    color: #777;
-}
-.hero {
-    padding: 80px 20px;
-    max-width: 800px;
-    margin: auto;
-}
-.hero img {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 12px;
-    margin: 30px 0;
-}
-</style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAF8F5;
+            color: #2C211A;
+        }
+        .heading-serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        /* Custom smooth hover transitions */
+        .btn-primary {
+            background-color: #171514;
+            color: #FAF8F5;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary:hover {
+            background-color: #6E5645;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(110, 86, 69, 0.3);
+        }
+        .btn-outline {
+            border: 1px solid #2C211A;
+            color: #2C211A;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-outline:hover {
+            background-color: #2C211A;
+            color: #FAF8F5;
+            transform: translateY(-2px);
+        }
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C0A995;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8F735D;
+        }
+        /* Glassmorphism styling */
+        .glass-nav {
+            background: rgba(250, 248, 245, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        /* Subtle image overlay effect */
+        .image-overlay {
+            position: relative;
+        }
+        .image-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(26,20,16,0.1) 0%, rgba(26,20,16,0.4) 100%);
+            border-radius: inherit;
+        }
+    </style>
 </head>
+<body class="antialiased selection:bg-nude-300 selection:text-nude-950">
 
-<body>
-    <nav>
-        <h2>MY BUSINESS</h2>
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-nude-200/60 transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo / Title -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-9 h-9 rounded-full bg-nude-900 text-nude-50 flex items-center justify-center font-serif text-lg font-semibold shadow-md group-hover:bg-nude-700 transition-colors">
+                    <span id="logoInitial">M</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="heading-serif font-bold text-2xl tracking-wider text-nude-950 uppercase" id="brandNameDisplay">MY BUSINESS</span>
+                    <span class="text-[10px] tracking-widest text-nude-600 uppercase font-medium -mt-1">Studio & Services</span>
+                </div>
+            </a>
 
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
-    </nav>
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                <a href="#home" class="nav-link text-nude-900 hover:text-nude-600 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-nude-700 hover:after:w-full after:transition-all">Home</a>
+                <a href="#about" class="nav-link text-nude-900 hover:text-nude-600 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-nude-700 hover:after:w-full after:transition-all">About</a>
+                <a href="#services" class="nav-link text-nude-900 hover:text-nude-600 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-nude-700 hover:after:w-full after:transition-all">Services</a>
+                <a href="#portfolio" class="nav-link text-nude-900 hover:text-nude-600 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-nude-700 hover:after:w-full after:transition-all">Portfolio</a>
+                <a href="#testimonials" class="nav-link text-nude-900 hover:text-nude-600 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-nude-700 hover:after:w-full after:transition-all">Reviews</a>
+            </nav>
 
-<section class="hero">
+            <!-- Action Buttons -->
+            <div class="hidden md:flex items-center gap-4">
+                <button onclick="toggleCustomizeDrawer()" class="p-2 rounded-full text-nude-700 hover:bg-nude-100 transition-colors" title="Customize Preview">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </button>
+                <button onclick="openContactModal()" class="btn-primary px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest">
+                    Contact Us
+                </button>
+            </div>
 
-    <h1>Welcome to My Business</h1>
+            <!-- Mobile Menu Toggle Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-nude-900 p-2 rounded-lg hover:bg-nude-200/50 transition-colors" aria-label="Toggle Navigation">
+                <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
 
-    <p>We provide amazing services for our customers.</p>
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-nude-50 border-b border-nude-200 px-6 py-6 space-y-4 shadow-xl">
+            <a href="#home" onclick="toggleMobileMenu()" class="block text-nude-900 font-medium py-2 border-b border-nude-200/60">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-nude-900 font-medium py-2 border-b border-nude-200/60">About Us</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block text-nude-900 font-medium py-2 border-b border-nude-200/60">Our Services</a>
+            <a href="#portfolio" onclick="toggleMobileMenu()" class="block text-nude-900 font-medium py-2 border-b border-nude-200/60">Portfolio</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()" class="block text-nude-900 font-medium py-2 border-b border-nude-200/60">Client Reviews</a>
+            <div class="pt-2 flex flex-col gap-3">
+                <button onclick="toggleMobileMenu(); openContactModal()" class="btn-primary w-full py-3 rounded-xl text-xs uppercase tracking-widest font-semibold">
+                    Contact Us
+                </button>
+                <button onclick="toggleMobileMenu(); toggleCustomizeDrawer()" class="w-full py-2.5 bg-nude-200 text-nude-900 rounded-xl text-xs uppercase tracking-wider font-semibold hover:bg-nude-300">
+                    Customize Preview
+                </button>
+            </div>
+        </div>
+    </header>
 
-    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72" alt="Modern business office">
+    <!-- Main Content Container -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section id="home" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-gradient-to-b from-nude-100/70 via-nude-50 to-nude-50">
+            
+            <!-- Soft Ambient Background Glows -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-nude-200/40 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-10 right-10 w-72 h-72 bg-nude-300/20 rounded-full blur-2xl pointer-events-none"></div>
 
-    <button>Contact Us</button>
+            <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Left Hero Text -->
+                    <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                        
+                        <!-- Badge -->
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-nude-200/80 border border-nude-300/60 text-nude-800 text-xs font-semibold tracking-wider uppercase shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-nude-600 animate-pulse"></span>
+                            <span id="badgeText">Elevated Bespoke Solutions</span>
+                        </div>
 
-</section>
+                        <!-- Headline -->
+                        <h1 class="heading-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-nude-950 leading-[1.15] tracking-tight" id="heroHeadline">
+                            Welcome to <br class="hidden sm:inline"/><span class="text-nude-700 italic font-normal" id="heroHeadlineSub">My Business</span>
+                        </h1>
 
+                        <!-- Subtitle Paragraph -->
+                        <p class="text-base sm:text-lg md:text-xl text-nude-800 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed" id="heroSubtitle">
+                            We provide amazing, high-end services for our clients. Crafting timeless experiences through modern strategy, sophisticated design, and uncompromising quality.
+                        </p>
+
+                        <!-- Action Button Group -->
+                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <button onclick="openContactModal()" class="btn-primary w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-semibold tracking-wider uppercase shadow-lg">
+                                Contact Us
+                            </button>
+                            <a href="#services" class="btn-outline w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-semibold tracking-wider uppercase text-center">
+                                Explore Services
+                            </a>
+                        </div>
+
+                        <!-- Mini Stats / Key Highlights -->
+                        <div class="pt-8 border-t border-nude-200/80 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0 text-center lg:text-left">
+                            <div>
+                                <p class="heading-serif text-2xl md:text-3xl font-bold text-nude-950">99%</p>
+                                <p class="text-xs text-nude-600 uppercase tracking-wider font-medium">Client Satisfaction</p>
+                            </div>
+                            <div>
+                                <p class="heading-serif text-2xl md:text-3xl font-bold text-nude-950">10+ Yrs</p>
+                                <p class="text-xs text-nude-600 uppercase tracking-wider font-medium">Industry Expertise</p>
+                            </div>
+                            <div>
+                                <p class="heading-serif text-2xl md:text-3xl font-bold text-nude-950">250+</p>
+                                <p class="text-xs text-nude-600 uppercase tracking-wider font-medium">Projects Delivered</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Hero Visual Card Showcase -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            
+                            <!-- Main Hero Image Frame -->
+                            <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/80 aspect-[4/5] bg-nude-200">
+                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" 
+                                     alt="Business Studio Showcase" 
+                                     class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                                     onerror="this.onerror=null; this.src='https://placehold.co/800x1000/E6DCD3/2C211A?text=Studio+Showcase';">
+                                <div class="absolute inset-0 bg-gradient-to-t from-nude-950/70 via-transparent to-transparent"></div>
+                                
+                                <div class="absolute bottom-6 left-6 right-6 text-white p-4 rounded-2xl bg-nude-950/40 backdrop-blur-md border border-white/10">
+                                    <p class="text-xs uppercase tracking-widest text-nude-300 font-semibold">Premium Standard</p>
+                                    <p class="heading-serif text-lg font-semibold text-nude-50">Tailored to perfection for every client.</p>
+                                </div>
+                            </div>
+
+                            <!-- Floating Badge Accent -->
+                            <div class="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl border border-nude-200 hidden sm:flex items-center gap-4 max-w-xs">
+                                <div class="w-12 h-12 rounded-full bg-nude-100 text-nude-800 flex items-center justify-center shrink-0">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-nude-950">Verified Excellence</p>
+                                    <p class="text-xs text-nude-600">Top rated luxury consultancy & business studio.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 bg-white border-y border-nude-200/70">
+            <div class="max-w-7xl mx-auto px-6 md:px-12">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    
+                    <!-- Left Images Grid -->
+                    <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+                        <div class="space-y-4">
+                            <div class="rounded-2xl overflow-hidden shadow-md aspect-[3/4] bg-nude-100">
+                                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Our Team Strategy" 
+                                     class="w-full h-full object-cover"
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x800/E6DCD3/2C211A?text=Our+Team';">
+                            </div>
+                            <div class="p-6 rounded-2xl bg-nude-100 border border-nude-200">
+                                <p class="heading-serif text-3xl font-bold text-nude-900">100%</p>
+                                <p class="text-xs text-nude-700 font-medium uppercase tracking-wider mt-1">Customized Approach</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4 pt-8">
+                            <div class="p-6 rounded-2xl bg-nude-900 text-nude-50">
+                                <svg class="w-8 h-8 text-nude-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                <p class="font-semibold text-sm">Swift Execution</p>
+                                <p class="text-xs text-nude-300 mt-1">Delivering impact without compromising quality.</p>
+                            </div>
+                            <div class="rounded-2xl overflow-hidden shadow-md aspect-[3/4] bg-nude-100">
+                                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Modern Workspace" 
+                                     class="w-full h-full object-cover"
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x800/D5C4B4/2C211A?text=Studio';">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Narrative Content -->
+                    <div class="lg:col-span-6 space-y-6">
+                        <span class="text-xs font-semibold tracking-widest uppercase text-nude-600">Our Story & Mission</span>
+                        
+                        <h2 class="heading-serif text-3xl sm:text-4xl md:text-5xl font-bold text-nude-950 leading-tight">
+                            Crafting Success Through Thoughtful Innovation
+                        </h2>
+
+                        <p class="text-nude-800 leading-relaxed">
+                            Founded on the pillars of integrity, aesthetic distinction, and strategic clarity, our company works hand-in-hand with clients who demand extraordinary outcomes.
+                        </p>
+
+                        <p class="text-nude-700 text-sm leading-relaxed">
+                            Whether you're looking to redefine your enterprise identity, optimize operational pathways, or launch bespoke client offerings, we blend earthy aesthetics with cutting-edge expertise to ensure your brand stands out in today's crowded marketplace.
+                        </p>
+
+                        <!-- Feature Checklist -->
+                        <div class="space-y-3 pt-2">
+                            <div class="flex items-center gap-3 text-sm text-nude-900 font-medium">
+                                <span class="w-5 h-5 rounded-full bg-nude-200 text-nude-800 flex items-center justify-center text-xs">✓</span>
+                                Transparent, client-centered communication from day one.
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-nude-900 font-medium">
+                                <span class="w-5 h-5 rounded-full bg-nude-200 text-nude-800 flex items-center justify-center text-xs">✓</span>
+                                End-to-end bespoke strategies crafted specifically for your goals.
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-nude-900 font-medium">
+                                <span class="w-5 h-5 rounded-full bg-nude-200 text-nude-800 flex items-center justify-center text-xs">✓</span>
+                                Long-term support and growth optimization.
+                            </div>
+                        </div>
+
+                        <!-- Author Sign-off -->
+                        <div class="pt-6 border-t border-nude-200 flex items-center justify-between">
+                            <div>
+                                <p class="heading-serif font-bold text-xl text-nude-950">Eleanor Vance</p>
+                                <p class="text-xs text-nude-600 uppercase tracking-wider">Managing Director</p>
+                            </div>
+                            <button onclick="openContactModal('Consultation Request')" class="btn-outline px-5 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider">
+                                Meet Our Team
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-24 bg-nude-50">
+            <div class="max-w-7xl mx-auto px-6 md:px-12">
+                
+                <!-- Section Title -->
+                <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
+                    <span class="text-xs font-semibold tracking-widest uppercase text-nude-600">What We Offer</span>
+                    <h2 class="heading-serif text-3xl sm:text-4xl md:text-5xl font-bold text-nude-950">Our Premium Services</h2>
+                    <p class="text-nude-700 text-base">Explore our curated suite of solutions designed to scale your brand and streamline operations.</p>
+                </div>
+
+                <!-- Services Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Service 1 -->
+                    <div class="bg-white rounded-3xl p-8 border border-nude-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-nude-100 text-nude-900 flex items-center justify-center mb-6 group-hover:bg-nude-900 group-hover:text-nude-50 transition-colors">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                            </div>
+                            <h3 class="heading-serif text-2xl font-bold text-nude-950 mb-3">Strategic Consulting</h3>
+                            <p class="text-nude-700 text-sm leading-relaxed mb-6">In-depth market analysis, brand positioning, and actionable growth roadmaps crafted to accelerate your business goals.</p>
+                            
+                            <ul class="space-y-2 mb-8 text-xs text-nude-800 font-medium">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nude-600"></span> Brand Positioning & Identity</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nude-600"></span> Operations Optimization</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nude-600"></span> Growth & Market Expansion</li>
+                            </ul>
+                        </div>
+                        <button onclick="selectServiceAndInquire('Strategic Consulting')" class="w-full py-3 rounded-xl bg-nude-100 text-nude-950 text-xs font-semibold uppercase tracking-wider hover:bg-nude-900 hover:text-nude-50 transition-colors">
+                            Inquire Now
+                        </button>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="bg-white rounded-3xl p-8 border border-nude-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-nude-100 text-nude-900 flex items-center justify-center mb-6 group-hover:bg-nude-900 group-hover:text-nude-50 transition-colors">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                            </div>
+                            <h3 class="heading-serif text-2xl font-bold text-nude-950 mb-3">Digital Design & Aesthetics</h3>
+                            <p class="text-nude-700 text-sm leading-relaxed mb-6">Creating cohesive visual systems, responsive web designs, and editorial design guidelines that exude understated luxury.</p>
+                            
+                            <ul class="space-y-2 mb-8 text-xs text-nude-800 font-medium">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nude-600"></span> Web UI/UX Experience</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nude-600"></span> Luxury Brand Aesthetics</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nude-600"></span> Visual Style Guides</li>
+                            </ul>
+                        </div>
+                        <button onclick="selectServiceAndInquire('Digital Design & Aesthetics')" class="w-full py-3 rounded-xl bg-nude-100 text-nude-950 text-xs font-semibold uppercase tracking-wider hover:bg-nude-900 hover:text-nude-50 transition-colors">
+                            Inquire Now
+                        </button>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="bg-white rounded-3xl p-8 border border-nude-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-nude-100 text-nude-900 flex items-center justify-center mb-6 group-hover:bg-nude-900 group-hover:text-nude-50 transition-colors">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <h3 class="heading-serif text-2xl font-bold text-nude-950 mb-3">VIP Client Management</h3>
+                            <p class="text-nude-700 text-sm leading-relaxed mb-6">Elevated client experience protocols, dedicated account management, and tailored concierge operations.</p>
+                            
+                            <ul class="space-y-2 mb-8 text-xs text-nude-800 font-medium">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nude-600"></span> Concierge Account Services</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nude-600"></span> Customer Retention Systems</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nude-600"></span> Tailored Communications</li>
+                            </ul>
+                        </div>
+                        <button onclick="selectServiceAndInquire('VIP Client Management')" class="w-full py-3 rounded-xl bg-nude-100 text-nude-950 text-xs font-semibold uppercase tracking-wider hover:bg-nude-900 hover:text-nude-50 transition-colors">
+                            Inquire Now
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Portfolio Gallery Section -->
+        <section id="portfolio" class="py-24 bg-white border-t border-nude-200">
+            <div class="max-w-7xl mx-auto px-6 md:px-12">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <span class="text-xs font-semibold tracking-widest uppercase text-nude-600">Selected Work</span>
+                        <h2 class="heading-serif text-3xl sm:text-4xl md:text-5xl font-bold text-nude-950 mt-2">Featured Projects</h2>
+                    </div>
+                    
+                    <!-- Category Tabs -->
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterPortfolio('all')" class="portfolio-tab active px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-nude-900 text-nude-50">All Work</button>
+                        <button onclick="filterPortfolio('branding')" class="portfolio-tab px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-nude-100 text-nude-800 hover:bg-nude-200">Branding</button>
+                        <button onclick="filterPortfolio('digital')" class="portfolio-tab px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-nude-100 text-nude-800 hover:bg-nude-200">Digital</button>
+                        <button onclick="filterPortfolio('interior')" class="portfolio-tab px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-nude-100 text-nude-800 hover:bg-nude-200">Spaces</button>
+                    </div>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="portfolioGrid">
+                    
+                    <!-- Portfolio Item 1 -->
+                    <div class="portfolio-item branding group cursor-pointer" onclick="viewProject('Maison Neutre Branding', 'Comprehensive visual identity for high-end interior architecture firm.')">
+                        <div class="rounded-3xl overflow-hidden aspect-[4/5] bg-nude-200 mb-4 relative">
+                            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Maison Neutre" 
+                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x800/E6DCD3/2C211A?text=Maison+Neutre';">
+                            <div class="absolute inset-0 bg-nude-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-white/90 text-nude-950 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">View Case Study</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-nude-600 uppercase tracking-widest font-semibold">Branding & Identity</p>
+                        <h3 class="heading-serif text-xl font-bold text-nude-950">Maison Neutre Studio</h3>
+                    </div>
+
+                    <!-- Portfolio Item 2 -->
+                    <div class="portfolio-item digital group cursor-pointer" onclick="viewProject('Solene E-Commerce', 'Bespoke web experience designed for organic skincare brand.')">
+                        <div class="rounded-3xl overflow-hidden aspect-[4/5] bg-nude-200 mb-4 relative">
+                            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Solene Skincare" 
+                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x800/D5C4B4/2C211A?text=Solene+Design';">
+                            <div class="absolute inset-0 bg-nude-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-white/90 text-nude-950 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">View Case Study</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-nude-600 uppercase tracking-widest font-semibold">Digital Experience</p>
+                        <h3 class="heading-serif text-xl font-bold text-nude-950">Solène Botanicals</h3>
+                    </div>
+
+                    <!-- Portfolio Item 3 -->
+                    <div class="portfolio-item interior group cursor-pointer" onclick="viewProject('Atelier Space Concept', 'Warm minimalist physical flagship store architecture concept.')">
+                        <div class="rounded-3xl overflow-hidden aspect-[4/5] bg-nude-200 mb-4 relative">
+                            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Atelier Space" 
+                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x800/C0A995/2C211A?text=Atelier+Space';">
+                            <div class="absolute inset-0 bg-nude-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-white/90 text-nude-950 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">View Case Study</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-nude-600 uppercase tracking-widest font-semibold">Spatial Design</p>
+                        <h3 class="heading-serif text-xl font-bold text-nude-950">Atelier Concept Flagship</h3>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-24 bg-nude-100/60 border-t border-nude-200">
+            <div class="max-w-7xl mx-auto px-6 md:px-12">
+                
+                <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
+                    <span class="text-xs font-semibold tracking-widest uppercase text-nude-600">Client Endorsements</span>
+                    <h2 class="heading-serif text-3xl sm:text-4xl md:text-5xl font-bold text-nude-950">What Our Partners Say</h2>
+                    <p class="text-nude-700 text-base">Feedback from founders and executives who elevated their business with us.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Review 1 -->
+                    <div class="bg-white p-8 rounded-3xl border border-nude-200/80 shadow-sm space-y-4 flex flex-col justify-between">
+                        <div>
+                            <!-- Star Rating -->
+                            <div class="flex text-amber-600 gap-1 mb-4">
+                                ★★★★★
+                            </div>
+                            <p class="text-nude-800 text-sm leading-relaxed italic">
+                                "Working with this studio completely redefined our brand strategy. Their sense of refined aesthetic combined with swift execution exceeded every single expectation."
+                            </p>
+                        </div>
+                        <div class="pt-6 border-t border-nude-100 flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-full bg-nude-300 overflow-hidden shrink-0">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Sophia Lauren" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm text-nude-950">Sophia Lauren</p>
+                                <p class="text-xs text-nude-600">Founder, L'Aura Beauty</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="bg-white p-8 rounded-3xl border border-nude-200/80 shadow-sm space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-amber-600 gap-1 mb-4">
+                                ★★★★★
+                            </div>
+                            <p class="text-nude-800 text-sm leading-relaxed italic">
+                                "The level of attention to detail is unmatched. From our initial consultation to final delivery, the experience was seamless, professional, and genuinely enjoyable."
+                            </p>
+                        </div>
+                        <div class="pt-6 border-t border-nude-100 flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-full bg-nude-300 overflow-hidden shrink-0">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Marcus Vance" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm text-nude-950">Marcus Vance</p>
+                                <p class="text-xs text-nude-600">CEO, Vance Holdings</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="bg-white p-8 rounded-3xl border border-nude-200/80 shadow-sm space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-amber-600 gap-1 mb-4">
+                                ★★★★★
+                            </div>
+                            <p class="text-nude-800 text-sm leading-relaxed italic">
+                                "They took our vision and transformed it into a world-class presence. Our clients consistently compliment the sophistication of our new digital presence."
+                            </p>
+                        </div>
+                        <div class="pt-6 border-t border-nude-100 flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-full bg-nude-300 overflow-hidden shrink-0">
+                                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80" alt="Elena Rostova" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm text-nude-950">Elena Rostova</p>
+                                <p class="text-xs text-nude-600">Creative Director, KIN Architecture</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Call to Action Banner -->
+        <section class="py-20 bg-nude-900 text-nude-50 relative overflow-hidden">
+            <div class="max-w-5xl mx-auto px-6 text-center space-y-6 relative z-10">
+                <span class="text-xs font-semibold tracking-widest uppercase text-nude-300">Start Your Journey</span>
+                <h2 class="heading-serif text-3xl sm:text-5xl font-bold leading-tight">Ready to Transform Your Business Idea Into Reality?</h2>
+                <p class="text-nude-300 text-base max-w-2xl mx-auto">Get in touch with our team today to schedule an introductory consultation and discover tailored strategies for your growth.</p>
+                <div class="pt-4">
+                    <button onclick="openContactModal()" class="bg-nude-100 text-nude-950 hover:bg-white hover:scale-105 transition-all px-9 py-4 rounded-xl text-xs font-bold uppercase tracking-widest shadow-xl">
+                        Schedule Consultation
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-nude-950 text-nude-400 py-16 border-t border-nude-900">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-10">
+            
+            <div class="md:col-span-1 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-nude-100 text-nude-950 flex items-center justify-center font-serif text-sm font-semibold">
+                        <span id="footerInitial">M</span>
+                    </div>
+                    <span class="heading-serif font-bold text-xl text-nude-100 uppercase" id="footerBrandName">MY BUSINESS</span>
+                </div>
+                <p class="text-xs text-nude-400 leading-relaxed">
+                    Delivering high-end tailored solutions, brand design, and strategic advisory with timeless neutral aesthetics.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-widest text-nude-200 mb-4">Quick Navigation</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#home" class="hover:text-nude-100 transition-colors">Home</a></li>
+                    <li><a href="#about" class="hover:text-nude-100 transition-colors">About Us</a></li>
+                    <li><a href="#services" class="hover:text-nude-100 transition-colors">Services</a></li>
+                    <li><a href="#portfolio" class="hover:text-nude-100 transition-colors">Portfolio</a></li>
+                    <li><a href="#testimonials" class="hover:text-nude-100 transition-colors">Reviews</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-widest text-nude-200 mb-4">Contact Details</h4>
+                <ul class="space-y-2 text-xs">
+                    <li class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-nude-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <span>hello@mybusiness.com</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-nude-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        <span>+1 (800) 555-0199</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-nude-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <span>100 Madison Ave, New York, NY</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-widest text-nude-200 mb-4">Newsletter</h4>
+                <p class="text-xs text-nude-400 mb-3">Subscribe for strategic insights and news.</p>
+                <form onsubmit="handleNewsletter(event)" class="space-y-2">
+                    <input type="email" required placeholder="Enter your email" class="w-full px-4 py-2.5 rounded-lg bg-nude-900 border border-nude-800 text-xs text-nude-100 focus:outline-none focus:border-nude-400">
+                    <button type="submit" class="w-full py-2.5 bg-nude-200 text-nude-950 font-bold text-xs uppercase tracking-wider rounded-lg hover:bg-white transition-colors">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 mt-12 pt-8 border-t border-nude-900 flex flex-col md:flex-row items-center justify-between text-xs text-nude-500">
+            <p>&copy; <span id="currentYear"></span> <span id="footerCopyrightName">MY BUSINESS</span>. All rights reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-nude-200 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-nude-200 transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-nude-200 transition-colors">Cookie Settings</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-nude-950/70 backdrop-blur-sm transition-opacity">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-8 relative shadow-2xl border border-nude-200 max-h-[90vh] overflow-y-auto">
+            
+            <button onclick="closeContactModal()" class="absolute top-6 right-6 text-nude-500 hover:text-nude-950 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+
+            <div class="mb-6">
+                <span class="text-xs font-semibold tracking-widest uppercase text-nude-600">Get In Touch</span>
+                <h3 class="heading-serif text-3xl font-bold text-nude-950 mt-1">Contact Our Studio</h3>
+                <p class="text-xs text-nude-600 mt-1">Fill out the form below and our team will get back to you within 24 hours.</p>
+            </div>
+
+            <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-nude-800 uppercase tracking-wider mb-1">Your Name</label>
+                    <input type="text" required placeholder="e.g. Jane Doe" class="w-full px-4 py-3 rounded-xl bg-nude-50 border border-nude-200 text-sm text-nude-950 focus:outline-none focus:border-nude-700">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-nude-800 uppercase tracking-wider mb-1">Email Address</label>
+                    <input type="email" required placeholder="jane@example.com" class="w-full px-4 py-3 rounded-xl bg-nude-50 border border-nude-200 text-sm text-nude-950 focus:outline-none focus:border-nude-700">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-nude-800 uppercase tracking-wider mb-1">Interested Service</label>
+                    <select id="modalServiceSelect" class="w-full px-4 py-3 rounded-xl bg-nude-50 border border-nude-200 text-sm text-nude-950 focus:outline-none focus:border-nude-700">
+                        <option value="General Inquiry">General Inquiry</option>
+                        <option value="Strategic Consulting">Strategic Consulting</option>
+                        <option value="Digital Design & Aesthetics">Digital Design & Aesthetics</option>
+                        <option value="VIP Client Management">VIP Client Management</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-nude-800 uppercase tracking-wider mb-1">Message</label>
+                    <textarea rows="4" required placeholder="Tell us about your goals, timeline, and project details..." class="w-full px-4 py-3 rounded-xl bg-nude-50 border border-nude-200 text-sm text-nude-950 focus:outline-none focus:border-nude-700"></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary w-full py-4 rounded-xl text-xs font-bold uppercase tracking-widest shadow-md">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Live Business Customizer Drawer -->
+    <div id="customizeDrawer" class="fixed inset-y-0 right-0 w-80 bg-white border-l border-nude-200 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 p-6 flex flex-col justify-between overflow-y-auto">
+        <div>
+            <div class="flex items-center justify-between pb-4 border-b border-nude-200 mb-6">
+                <div>
+                    <h3 class="heading-serif font-bold text-xl text-nude-950">Customize Preview</h3>
+                    <p class="text-[11px] text-nude-600">Test your own business details live!</p>
+                </div>
+                <button onclick="toggleCustomizeDrawer()" class="text-nude-500 hover:text-nude-950">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+
+            <div class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-semibold text-nude-800 uppercase tracking-wider mb-1">Business Name</label>
+                    <input type="text" id="customNameInput" value="MY BUSINESS" oninput="updateLivePreview()" class="w-full px-3 py-2 rounded-lg bg-nude-50 border border-nude-200 text-nude-950 focus:outline-none focus:border-nude-700">
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-nude-800 uppercase tracking-wider mb-1">Hero Tagline</label>
+                    <input type="text" id="customTaglineInput" value="We provide amazing services for our customers." oninput="updateLivePreview()" class="w-full px-3 py-2 rounded-lg bg-nude-50 border border-nude-200 text-nude-950 focus:outline-none focus:border-nude-700">
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-nude-800 uppercase tracking-wider mb-1">Badge Headline</label>
+                    <input type="text" id="customBadgeInput" value="Elevated Bespoke Solutions" oninput="updateLivePreview()" class="w-full px-3 py-2 rounded-lg bg-nude-50 border border-nude-200 text-nude-950 focus:outline-none focus:border-nude-700">
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-6 border-t border-nude-200">
+            <button onclick="toggleCustomizeDrawer()" class="btn-primary w-full py-3 rounded-xl text-xs font-semibold uppercase tracking-wider">
+                Done Previewing
+            </button>
+        </div>
+    </div>
+
+    <!-- Notification Toast Container -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-nude-950 text-nude-50 px-6 py-4 rounded-2xl shadow-2xl border border-nude-800 flex items-center gap-3 transition-all duration-300 transform translate-y-4">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span id="toastMessage" class="text-xs font-semibold tracking-wide">Action completed successfully.</span>
+    </div>
+
+    <script>
+        // Set dynamic current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Navigation Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Contact Modal Logic
+        function openContactModal(preselectedService = '') {
+            const modal = document.getElementById('contactModal');
+            if (preselectedService) {
+                const select = document.getElementById('modalServiceSelect');
+                if (select) {
+                    for (let option of select.options) {
+                        if (option.value === preselectedService) {
+                            option.selected = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            modal.classList.remove('hidden');
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.add('hidden');
+        }
+
+        function selectServiceAndInquire(serviceName) {
+            openContactModal(serviceName);
+        }
+
+        // Contact Form Submission
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            closeContactModal();
+            showToast("Thank you! Your message has been received.");
+        }
+
+        // Newsletter Form Submission
+        function handleNewsletter(e) {
+            e.preventDefault();
+            e.target.reset();
+            showToast("Subscribed! Thank you for joining our newsletter.");
+        }
+
+        // Notification Toast Manager
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.textContent = message;
+            
+            toast.classList.remove('hidden', 'translate-y-4');
+            toast.classList.add('translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-4');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 300);
+            }, 3500);
+        }
+
+        // Customizer Drawer Controls
+        function toggleCustomizeDrawer() {
+            const drawer = document.getElementById('customizeDrawer');
+            drawer.classList.toggle('translate-x-full');
+        }
+
+        // Live Business Customizer Functionality
+        function updateLivePreview() {
+            const nameVal = document.getElementById('customNameInput').value || 'MY BUSINESS';
+            const taglineVal = document.getElementById('customTaglineInput').value || 'We provide amazing services for our customers.';
+            const badgeVal = document.getElementById('customBadgeInput').value || 'Elevated Bespoke Solutions';
+
+            // Update Brand Name everywhere
+            document.getElementById('brandNameDisplay').textContent = nameVal;
+            document.getElementById('heroHeadlineSub').textContent = nameVal;
+            document.getElementById('footerBrandName').textContent = nameVal;
+            document.getElementById('footerCopyrightName').textContent = nameVal;
+
+            // Update Initial
+            const firstLetter = nameVal.charAt(0).toUpperCase() || 'M';
+            document.getElementById('logoInitial').textContent = firstLetter;
+            document.getElementById('footerInitial').textContent = firstLetter;
+
+            // Update Tagline & Badge
+            document.getElementById('heroSubtitle').textContent = taglineVal;
+            document.getElementById('badgeText').textContent = badgeVal;
+        }
+
+        // Portfolio Filtering
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const tabs = document.querySelectorAll('.portfolio-tab');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-nude-900', 'text-nude-50');
+                tab.classList.add('bg-nude-100', 'text-nude-800');
+            });
+
+            event.target.classList.remove('bg-nude-100', 'text-nude-800');
+            event.target.classList.add('bg-nude-900', 'text-nude-50');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // View Project Modal / Toast
+        function viewProject(title, desc) {
+            showToast(`Project preview: ${title}`);
+        }
+
+        // Sticky Header scroll styling effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 40) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
 </body>
 </html>
