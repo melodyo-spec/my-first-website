@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MelMade | Website Curator</title>
 
-    <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google Fonts: Cormorant Garamond & Inter -->
@@ -133,6 +133,7 @@
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
                 <a href="#home" class="nav-link text-nude-900 hover:text-nude-600 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-nude-700 hover:after:w-full after:transition-all">Home</a>
                 <a href="#about" class="nav-link text-nude-900 hover:text-nude-600 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-nude-700 hover:after:w-full after:transition-all">About</a>
+                <a href="#rating" class="nav-link text-nude-900 hover:text-nude-600 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-nude-700 hover:after:w-full after:transition-all">Rating</a>
                 <a href="#contact" onclick="openContactModal()" class="nav-link text-nude-900 hover:text-nude-600 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-nude-700 hover:after:w-full after:transition-all">Contact</a>
             </nav>
 
@@ -156,6 +157,7 @@
         <div id="mobileMenu" class="hidden md:hidden bg-nude-50 border-b border-nude-200 px-6 py-6 space-y-4 shadow-xl">
             <a href="#home" onclick="toggleMobileMenu()" class="block text-nude-900 font-medium py-2 border-b border-nude-200/60">Home</a>
             <a href="#about" onclick="toggleMobileMenu()" class="block text-nude-900 font-medium py-2 border-b border-nude-200/60">About Us</a>
+            <a href="#rating" onclick="toggleMobileMenu()" class="block text-nude-900 font-medium py-2 border-b border-nude-200/60">Rating</a>
             <a href="#contact" onclick="toggleMobileMenu(); openContactModal()" class="block text-nude-900 font-medium py-2 border-b border-nude-200/60">Contact</a>
             <div class="pt-2 flex flex-col gap-3">
                 <button onclick="toggleMobileMenu(); openContactModal()" class="btn-primary w-full py-3 rounded-xl text-xs uppercase tracking-widest font-semibold">
@@ -214,30 +216,38 @@
 
                     <!-- Right Hero Visual Card Showcase -->
                     <div class="lg:col-span-5 relative">
-                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="relative mx-auto max-w-md lg:max-w-none space-y-6">
                             
-                            <!-- Main Hero Image Frame -->
-                            <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/80 aspect-[4/5] bg-nude-200">
-                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" 
-                                     alt="Business Studio Showcase" 
-                                     class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                                     onerror="this.onerror=null; this.src='https://placehold.co/800x1000/E6DCD3/2C211A?text=Studio+Showcase';">
-                                <div class="absolute inset-0 bg-gradient-to-t from-nude-950/70 via-transparent to-transparent"></div>
-                                
-                                <div class="absolute bottom-6 left-6 right-6 text-white p-4 rounded-2xl bg-nude-950/40 backdrop-blur-md border border-white/10">
-                                    <p class="text-xs uppercase tracking-widest text-nude-300 font-semibold">Premium Standard</p>
-                                    <p class="heading-serif text-lg font-semibold text-nude-50">Tailored to perfection for every client.</p>
+                            <!-- Hero Feature Showcase Card -->
+                            <div class="p-8 rounded-3xl bg-white border border-nude-200/90 shadow-xl space-y-6">
+                                <div class="w-12 h-12 rounded-2xl bg-nude-900 text-nude-50 flex items-center justify-center text-xl font-serif font-bold">
+                                    M
+                                </div>
+                                <div class="space-y-2">
+                                    <span class="text-[10px] font-bold tracking-widest uppercase text-nude-600">Web Design Studio</span>
+                                    <h3 class="heading-serif text-2xl font-bold text-nude-950">Tailored Digital Experiences</h3>
+                                    <p class="text-xs text-nude-700 leading-relaxed">
+                                        Crafting bespoke, high-converting websites tailored specifically to elevate your business online.
+                                    </p>
+                                </div>
+
+                                <div class="pt-2 border-t border-nude-100 flex items-center justify-between text-xs font-semibold text-nude-800">
+                                    <span class="flex items-center gap-1.5">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                        Accepting New Clients
+                                    </span>
+                                    <a href="#rating" class="text-nude-600 hover:text-nude-950 underline decoration-nude-300">Leave a Rating ↓</a>
                                 </div>
                             </div>
 
                             <!-- Floating Badge Accent -->
-                            <div class="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl border border-nude-200 hidden sm:flex items-center gap-4 max-w-xs">
+                            <div class="bg-white p-5 rounded-2xl shadow-lg border border-nude-200 flex items-center gap-4">
                                 <div class="w-12 h-12 rounded-full bg-nude-100 text-nude-800 flex items-center justify-center shrink-0">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                                 </div>
                                 <div>
                                     <p class="text-sm font-bold text-nude-950">Verified Excellence</p>
-                                    <p class="text-xs text-nude-600">Top rated luxury consultancy & business studio.</p>
+                                    <p class="text-xs text-nude-600">Custom websites designed with your business in mind.</p>
                                 </div>
                             </div>
 
@@ -311,6 +321,67 @@
             </div>
         </section>
 
+        <!-- Rating Section -->
+        <section id="rating" class="py-24 bg-nude-100/60 border-t border-nude-200/80">
+            <div class="max-w-4xl mx-auto px-6">
+                
+                <div class="text-center mb-10 space-y-3">
+                    <span class="text-xs font-semibold tracking-widest uppercase text-nude-600">Client Feedback</span>
+                    <h2 class="heading-serif text-3xl sm:text-4xl md:text-5xl font-bold text-nude-950">Leave a Rating</h2>
+                    <p class="text-sm text-nude-700 max-w-md mx-auto">How would you rate your experience with MelMade? Tap the stars below to share your feedback with us.</p>
+                </div>
+
+                <!-- Interactive 5-Star Rating Card -->
+                <div class="p-8 sm:p-10 rounded-3xl bg-white border border-nude-200/90 shadow-xl relative overflow-hidden max-w-xl mx-auto" id="ratingCardInner">
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between border-b border-nude-100 pb-4">
+                            <div>
+                                <span class="text-[10px] font-bold tracking-widest uppercase text-nude-600">MelMade Studio</span>
+                                <h3 class="heading-serif text-2xl font-bold text-nude-950">Submit Your Review</h3>
+                            </div>
+                            <div class="flex items-center gap-1 bg-nude-100 px-3 py-1 rounded-full text-xs font-bold text-nude-900">
+                                <span class="text-amber-500">★</span> 5.0 / 5.0
+                            </div>
+                        </div>
+
+                        <form onsubmit="submitRating(event)" class="space-y-4 pt-1">
+                            <!-- Star Selector -->
+                            <div class="flex flex-col items-center justify-center p-5 bg-nude-50/80 rounded-2xl border border-nude-200/60">
+                                <div class="flex items-center gap-2" onmouseleave="resetStarHover()">
+                                    <button type="button" onclick="setRating(1)" onmouseenter="hoverRating(1)" class="rating-star-btn p-1 transition-transform hover:scale-125 focus:outline-none">
+                                        <svg class="w-8 h-8 text-amber-400 fill-amber-400 transition-colors" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    </button>
+                                    <button type="button" onclick="setRating(2)" onmouseenter="hoverRating(2)" class="rating-star-btn p-1 transition-transform hover:scale-125 focus:outline-none">
+                                        <svg class="w-8 h-8 text-amber-400 fill-amber-400 transition-colors" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    </button>
+                                    <button type="button" onclick="setRating(3)" onmouseenter="hoverRating(3)" class="rating-star-btn p-1 transition-transform hover:scale-125 focus:outline-none">
+                                        <svg class="w-8 h-8 text-amber-400 fill-amber-400 transition-colors" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    </button>
+                                    <button type="button" onclick="setRating(4)" onmouseenter="hoverRating(4)" class="rating-star-btn p-1 transition-transform hover:scale-125 focus:outline-none">
+                                        <svg class="w-8 h-8 text-amber-400 fill-amber-400 transition-colors" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    </button>
+                                    <button type="button" onclick="setRating(5)" onmouseenter="hoverRating(5)" class="rating-star-btn p-1 transition-transform hover:scale-125 focus:outline-none">
+                                        <svg class="w-8 h-8 text-amber-400 fill-amber-400 transition-colors" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    </button>
+                                </div>
+                                <span class="text-xs font-semibold text-nude-800 mt-2.5" id="ratingLabelText">5 Stars - Excellent!</span>
+                            </div>
+
+                            <div>
+                                <input type="text" placeholder="Your Name (Optional)" class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-nude-50 border border-nude-200 text-nude-950 focus:outline-none focus:border-nude-700 mb-2.5">
+                                <textarea rows="3" placeholder="Leave a short review or message..." class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-nude-50 border border-nude-200 text-nude-950 focus:outline-none focus:border-nude-700 resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-primary w-full py-3.5 rounded-xl text-xs font-semibold uppercase tracking-wider">
+                                Submit Rating
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <!-- Call to Action Banner -->
         <section class="py-20 bg-nude-900 text-nude-50 relative overflow-hidden">
             <div class="max-w-5xl mx-auto px-6 text-center space-y-6 relative z-10">
@@ -348,6 +419,7 @@
                 <ul class="space-y-2 text-xs">
                     <li><a href="#home" class="hover:text-nude-100 transition-colors">Home</a></li>
                     <li><a href="#about" class="hover:text-nude-100 transition-colors">About Us</a></li>
+                    <li><a href="#rating" class="hover:text-nude-100 transition-colors">Rating</a></li>
                     <li><a href="#contact" onclick="openContactModal()" class="hover:text-nude-100 transition-colors">Contact</a></li>
                 </ul>
             </div>
@@ -542,6 +614,60 @@
         // View Project Modal / Toast
         function viewProject(title, desc) {
             showToast(`Project preview: ${title}`);
+        }
+
+        // Interactive 5-Star Rating Logic
+        let currentSelectedRating = 5;
+        let ratingSubmitted = false;
+
+        function setRating(rating) {
+            currentSelectedRating = rating;
+            updateStarDisplay(rating);
+        }
+
+        function hoverRating(rating) {
+            if (!ratingSubmitted) {
+                updateStarDisplay(rating);
+            }
+        }
+
+        function resetStarHover() {
+            if (!ratingSubmitted) {
+                updateStarDisplay(currentSelectedRating);
+            }
+        }
+
+        function updateStarDisplay(rating) {
+            const starBtns = document.querySelectorAll('.rating-star-btn');
+            starBtns.forEach((btn, index) => {
+                const svg = btn.querySelector('svg');
+                if (index < rating) {
+                    svg.setAttribute('class', 'w-8 h-8 text-amber-400 fill-amber-400 transition-colors');
+                } else {
+                    svg.setAttribute('class', 'w-8 h-8 text-nude-300 fill-none transition-colors');
+                }
+            });
+            const label = document.getElementById('ratingLabelText');
+            if (label) {
+                const textLabels = ['1 Star - Poor', '2 Stars - Fair', '3 Stars - Good', '4 Stars - Very Good', '5 Stars - Excellent!'];
+                label.textContent = textLabels[rating - 1] || `${rating} Stars`;
+            }
+        }
+
+        function submitRating(e) {
+            e.preventDefault();
+            ratingSubmitted = true;
+            const container = document.getElementById('ratingCardInner');
+            if (container) {
+                container.innerHTML = `
+                    <div class="text-center py-8 space-y-3">
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto text-xl font-bold">✓</div>
+                        <h4 class="heading-serif text-2xl font-bold text-nude-950">Thank You!</h4>
+                        <p class="text-xs text-nude-700 leading-relaxed max-w-xs mx-auto">Your ${currentSelectedRating}-star rating has been successfully submitted to MelMade.</p>
+                    </div>
+                `;
+            }
+            showToast(`Thank you for giving us a ${currentSelectedRating}-star rating!`);
         }
 
         // Sticky Header scroll styling effect
